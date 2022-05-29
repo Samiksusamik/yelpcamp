@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Review = require('./review')
 
+// Campground Schema
 const CampgroundSchema = new Schema({
     title: String,
     image: String,
@@ -16,6 +17,7 @@ const CampgroundSchema = new Schema({
     ]
 });
 
+// Delete all reviews of deleted campgrounds
 CampgroundSchema.post('findOneAndDelete', async doc => {
     if(doc) {
         await Review.remove({

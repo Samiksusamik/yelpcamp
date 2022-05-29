@@ -1,3 +1,4 @@
+// City Data
 module.exports = [
     {
         city: "New York",

@@ -1,3 +1,4 @@
+// Campground Name Builders
 module.exports.descriptors = [
     'Forest',
     'Ancient',
