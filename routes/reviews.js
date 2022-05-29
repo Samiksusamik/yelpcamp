@@ -1,5 +1,5 @@
 const express = require('express')
-const router = express.Router({mergeParams: true})
+const router = express.Router({ mergeParams: true })
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
 const Review = require('../models/review')
@@ -15,7 +15,7 @@ function validateReview(req, res, next) {
     } else {
         next();
     }
-} 
+}
 
 // Review Routes
 router.post('/', validateReview, catchAsync(async (req, res) => {
@@ -29,8 +29,8 @@ router.post('/', validateReview, catchAsync(async (req, res) => {
 }))
 
 router.delete('/:reviewId', catchAsync(async (req, res) => {
-    const {id, reviewId} = req.params
-    await Campground.findByIdAndUpdate(id, {$pull: {reviews: reviewId} })
+    const { id, reviewId } = req.params
+    await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } })
     await Review.findByIdAndDelete(reviewId)
     req.flash('success', 'Successfully deleted Review.')
     res.redirect(`/campgrounds/${id}`)
